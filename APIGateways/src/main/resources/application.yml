@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: API-Gateway
+
+
+
+
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/userController/**
+        - id: contact-service
+          uri: lb://contact-service
+          predicates:
+            - Path=/contactController/**
+
+
+server:
+  port: 8999
+eureka:
+  instance:
+    hostname: localhost
+
